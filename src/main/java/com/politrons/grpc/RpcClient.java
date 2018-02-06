@@ -10,6 +10,7 @@ public class RpcClient {
                 .usePlaintext(true)
                 .build();
 
+
         RpcServiceGrpc.RpcServiceBlockingStub stub
                 = RpcServiceGrpc.newBlockingStub(channel);
 
