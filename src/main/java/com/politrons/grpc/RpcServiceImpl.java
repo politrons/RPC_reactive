@@ -3,8 +3,6 @@ package com.politrons.grpc;
 import io.grpc.stub.StreamObserver;
 import rx.Observable;
 
-import java.util.UUID;
-
 public class RpcServiceImpl extends RpcServiceGrpc.RpcServiceImplBase {
 
     @Override
