@@ -1,0 +1,17 @@
+
+syntax = "proto3";
+option java_multiple_files = true;
+package com.politrons.grpc;
+
+message RpcRequest {
+    int32 attr = 1;
+    int32 attr2 = 2;
+}
+
+message RpcResponse {
+    string value = 1;
+}
+
+service RpcService {
+    rpc connect(RpcRequest) returns (RpcResponse);
+}
