@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.politrons.grpc.reactive;
+
+//Here we define the Request Class type of the communication.
+message ReactiveRequest {
+    string attr = 1;
+}
+
+//Here we define the Response Class type of the communication.
+message ReactiveResponse {
+    string value = 1;
+}
+service ReactiveService {
+    rpc streamCall(stream ReactiveRequest) returns (stream ReactiveResponse);
+}

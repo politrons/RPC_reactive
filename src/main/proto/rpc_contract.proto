@@ -5,13 +5,11 @@ to be used.
 
 **/
 syntax = "proto3";
-option java_multiple_files = true;
-package com.politrons.grpc;
+package com.politrons.grpc.simple;
 
 //Here we define the Request Class type of the communication.
 message RpcRequest {
-    int32 attr = 1;
-    int32 attr2 = 2;
+    string attr = 1;
 }
 
 //Here we define the Response Class type of the communication.
