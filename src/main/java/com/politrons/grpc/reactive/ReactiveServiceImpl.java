@@ -5,12 +5,16 @@ import io.grpc.stub.StreamObserver;
 public class ReactiveServiceImpl extends ReactiveServiceGrpc.ReactiveServiceImplBase {
 
     @Override
-    public StreamObserver<ReactiveRequest> streamCall(StreamObserver<ReactiveResponse> responseObserver) {
+    public StreamObserver<ReactiveRequest> myStreamCall(StreamObserver<ReactiveResponse> responseObserver) {
+        return createReactiveRequestStreamObserver(responseObserver);
+    }
+
+    private StreamObserver<ReactiveRequest> createReactiveRequestStreamObserver(StreamObserver<ReactiveResponse> responseObserver) {
         return new StreamObserver<ReactiveRequest>() {
 
             @Override
             public void onNext(ReactiveRequest value) {
-                System.out.println("value: " + value.getAttr());
+                System.out.println("value from client: " + value.getAttr());
                 ReactiveResponse response = ReactiveResponse.newBuilder()
                         .setValue(value.getAttr().toUpperCase())
                         .build();

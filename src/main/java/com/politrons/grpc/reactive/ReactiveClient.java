@@ -29,7 +29,7 @@ public class ReactiveClient {
     }
 
     private static StreamObserver<ReactiveRequest> createServerStream(ReactiveServiceGrpc.ReactiveServiceStub stub) {
-        return stub.streamCall(new StreamObserver<ReactiveResponse>() {
+        return stub.myStreamCall(new StreamObserver<ReactiveResponse>() {
 
             @Override
             public void onNext(ReactiveResponse value) {
