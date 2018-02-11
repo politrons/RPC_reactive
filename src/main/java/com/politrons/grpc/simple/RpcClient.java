@@ -33,7 +33,7 @@ public class RpcClient {
     }
 
     /**
-     * From the contract of the proto we create the BlockingStub in this case there´re other strategies as Async communication.
+     * From the contract of the proto we create the FutureStub. There´re other strategies as Sync communication.
      */
     private static RpcServiceGrpc.RpcServiceFutureStub getRpcServiceStub(ManagedChannel channel) {
         return RpcServiceGrpc.newFutureStub(channel);
