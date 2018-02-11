@@ -1,6 +1,6 @@
 Author Pablo Perez Garcia 
 
-![My image](src/main/resources/img/grpc.png)
+![My image](src/main/resources/img/simple.svg)
 
 ## Reactive gRPC
 
@@ -8,7 +8,7 @@ Here we cover some examples of [gRPC](https://grpc.io/docs/quickstart/).
 
 #### Simple gRCP
 
-![My image](src/main/resources/img/simple.svg)
+![My image](src/main/resources/img/grpc.png)
 
 * [client](src/main/java/com/politrons/grpc/simple/RpcClient.java)
 
