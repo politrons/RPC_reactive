@@ -4,7 +4,7 @@ Author Pablo Perez Garcia
 
 ## Reactive gRPC
 
-Here we cover with some examples and explanations how [gRPC](https://grpc.io/docs/quickstart/) works.
+Here we cover with some examples and explanations of how [gRPC](https://grpc.io/docs/quickstart/) works.
 
 #### Simple gRCP
 
