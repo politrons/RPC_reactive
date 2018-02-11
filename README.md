@@ -10,7 +10,7 @@ Here we cover with some examples and explanations how [gRPC](https://grpc.io/doc
 
 ![My image](src/main/resources/img/grpc.png)
 
-An example and explanation of how gRPC works between client-server
+An example of how gRPC works between client-server
 
 * [client](src/main/java/com/politrons/grpc/simple/RpcClient.java)
 
@@ -22,7 +22,7 @@ An example and explanation of how gRPC works between client-server
 
 ![My image](src/main/resources/img/flatMap.png)
 
-An example and explanation of how to use streams gRPC between client-server
+An example of how to use streams gRPC between client-server
 
 * [client](src/main/java/com/politrons/grpc/reactive/ReactiveClient.java)
 
