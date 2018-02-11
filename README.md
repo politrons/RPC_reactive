@@ -12,7 +12,7 @@ Here we cover some examples of [gRPC](https://grpc.io/docs/quickstart/).
 
 * [client](src/main/java/com/politrons/grpc/simple/RpcClient.java)
 
-* [server](src/main/java/com/politrons/grpc/simple/RpcServiceImpl.java)
+* [Service](src/main/java/com/politrons/grpc/simple/RpcServiceImpl.java)
 
 * [proto](src/main/proto/rpc_contract.proto)
 
