@@ -4,11 +4,13 @@ Author Pablo Perez Garcia
 
 ## Reactive gRPC
 
-Here we cover some examples of [gRPC](https://grpc.io/docs/quickstart/).
+Here we cover with some examples and explanations how [gRPC](https://grpc.io/docs/quickstart/) works.
 
 #### Simple gRCP
 
 ![My image](src/main/resources/img/grpc.png)
+
+An example and explanation of how gRPC works between client-server
 
 * [client](src/main/java/com/politrons/grpc/simple/RpcClient.java)
 
@@ -19,6 +21,8 @@ Here we cover some examples of [gRPC](https://grpc.io/docs/quickstart/).
 #### Reactive 
 
 ![My image](src/main/resources/img/flatMap.png)
+
+An example and explanation of how to use streams gRPC between client-server
 
 * [client](src/main/java/com/politrons/grpc/reactive/ReactiveClient.java)
 
