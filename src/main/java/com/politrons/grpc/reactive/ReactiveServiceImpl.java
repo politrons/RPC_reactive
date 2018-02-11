@@ -2,10 +2,14 @@ package com.politrons.grpc.reactive;
 
 import io.grpc.stub.StreamObserver;
 
+/**
+ * From the server side we will get the entry stream which is the response and we will return a new stream with the request
+ * to be used from the client to start the communication.
+ */
 public class ReactiveServiceImpl extends ReactiveServiceGrpc.ReactiveServiceImplBase {
 
     @Override
-    public StreamObserver<ReactiveRequest> myStreamCall(StreamObserver<ReactiveResponse> responseObserver) {
+    public StreamObserver<ReactiveRequest> myStreamChannel(StreamObserver<ReactiveResponse> responseObserver) {
         return createReactiveRequestStreamObserver(responseObserver);
     }
 

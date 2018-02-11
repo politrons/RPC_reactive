@@ -12,5 +12,5 @@ message ReactiveResponse {
     string value = 1;
 }
 service ReactiveService {
-    rpc myStreamCall(stream ReactiveRequest) returns (stream ReactiveResponse);
+    rpc myStreamChannel(stream ReactiveRequest) returns (stream ReactiveResponse);
 }
