@@ -17,7 +17,10 @@ message RpcResponse {
     string value = 1;
 }
 
-//Here we define the service which it will be set in the server.
+/*Here we define the service which it will be set in the server.
+/ Also we define the method connect which must be implement in the service to be invoked by client.
+/ We define the Class type for the request RpcRequest, and also the response type class RpcResponse
+*/
 service RpcService {
     rpc connect(RpcRequest) returns (RpcResponse);
 }

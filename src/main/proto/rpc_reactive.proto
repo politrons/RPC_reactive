@@ -2,7 +2,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 package com.politrons.grpc.reactive;
 
-//Here we define the Request Class type of the communication.
+// Here we define the Request Class type of the communication.
 message ReactiveRequest {
     string attr = 1;
 }
@@ -11,6 +11,12 @@ message ReactiveRequest {
 message ReactiveResponse {
     string value = 1;
 }
+
+/*Here we define the service which it will be set in the server.
+/ Also we define the method myStreamChannel which must be implement in the service to be invoked by client.
+/ We define the Class type for the request StreamObserver<ReactiveRequest>,
+/ and also the response type class StreamObserver<RpcResponse>
+*/
 service ReactiveService {
     rpc myStreamChannel(stream ReactiveRequest) returns (stream ReactiveResponse);
 }
