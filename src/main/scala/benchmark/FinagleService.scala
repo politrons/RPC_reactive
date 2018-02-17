@@ -1,5 +1,7 @@
+package benchmark
 
-import com.twitter.finagle.{Failure, http, _}
+
+import com.twitter.finagle.{http, _}
 import com.twitter.util.Future
 
 /**
@@ -11,9 +13,8 @@ object FinagleService {
 
   val service = new Service[http.Request, http.Response] {
     def apply(req: http.Request): Future[http.Response] = {
-      val value = req.getContentString()
       val res = req.getResponse()
-      res.setContentString(value)
+      res.setContentString(req.getContentString())
       Future.value(res)
     }
   }

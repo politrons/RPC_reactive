@@ -30,6 +30,27 @@ An example of how to use streams gRPC between client-server
 
 * [proto](src/main/proto/rpc_reactive.proto)
 
+
+#### Benchmarks
+
+![My image](src/main/resources/img/benchmark.png)
+
+For this benchmark we made 10k request and calc the response time
+
+* [Rest](src/main/scala/benchmark) Http finagle client against Grizzly server.
+
+* [gRPC](src/main/java/com/politrons/grpc/benchmark/regular) using standard implementation.
+
+* [gRPC Reactive](src/main/java/com/politrons/grpc/benchmark/reactive) using reactive ObservableStream.
+
+##### Results
+
+```.bash
+Rest Grizzly response time:17207 millis
+RPC regular response time:8639 millis
+RPC Reactive response time:1331 millis
+```
+
 #### Configuration
 
 Once that you have your contracts(proto) ready, you need to build your classes which will 

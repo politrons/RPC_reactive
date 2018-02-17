@@ -1,7 +1,10 @@
+package benchmark
 
+
+
+import java.nio.charset.Charset
 
 import org.glassfish.grizzly.http.server.{HttpHandler, HttpServer, Request, Response}
-import java.nio.charset.Charset
 
 object MyGrizzlyServer {
 
@@ -10,7 +13,7 @@ object MyGrizzlyServer {
     server.getServerConfiguration.addHttpHandler(new HttpHandler() {
       @throws[Exception]
       def service(request: Request, response: Response): Unit = {
-        val body = request.getPostBody(999999).toStringContent(Charset.defaultCharset)
+        val body = request.getPostBody(20).toStringContent(Charset.defaultCharset)
         response.getWriter.write(body)
       }
     }, "/grizzly")

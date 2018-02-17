@@ -1,4 +1,5 @@
-import com.politrons.grpc.benchmark.BenchmarkUtils
+package benchmark
+
 import com.politrons.grpc.benchmark.BenchmarkUtils._
 import com.twitter.finagle.http.{Request, Response}
 import com.twitter.finagle.{Http, Service, http}
@@ -11,7 +12,7 @@ import com.twitter.util.Await
   * The Service class will receive and response a Future[Response] the type that you specify
   * Service[Req,Rep]
   */
-object HttpClient {
+object HttpClientToGrizzly {
 
   def run() = {
     val client: Service[Request, Response] = Http.newService("localhost:1982")

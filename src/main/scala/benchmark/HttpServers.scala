@@ -1,6 +1,6 @@
-import com.twitter.conversions.time._
+package benchmark
+
 import com.twitter.finagle._
-import com.twitter.finagle.http.service.HttpResponseClassifier
 
 /**
   * Created by pabloperezgarcia on 08/04/2017.
@@ -10,7 +10,7 @@ import com.twitter.finagle.http.service.HttpResponseClassifier
   */
 object HttpServers {
 
-  private val port = "1982"
+  private val port = "1983"
 
   def start(): Unit = {
    Http.server
