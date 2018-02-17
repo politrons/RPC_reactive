@@ -35,7 +35,7 @@ An example of how to use streams gRPC between client-server
 
 ![My image](src/main/resources/img/benchmark.png)
 
-For this benchmark we made 10k request and calc the response time
+For this benchmark we made 10k request using Rest and gRPC, and get the response time.
 
 * [Rest](src/main/scala/benchmark) Http finagle client against Grizzly server.
 
