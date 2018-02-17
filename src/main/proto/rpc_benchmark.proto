@@ -1,0 +1,26 @@
+/**
+
+Here we define the contract that both client and server will use to generate the code
+to be used.
+
+**/
+syntax = "proto3";
+package com.politrons.grpc.simple;
+
+//Here we define the Request Class type of the communication.
+message RpcBenchMarkRequest {
+    string attr = 1;
+}
+
+//Here we define the Response Class type of the communication.
+message RpcBenchMarkResponse {
+    string value = 1;
+}
+
+/*Here we define the service which it will be set in the server.
+/ Also we define the method connect which must be implement in the service to be invoked by client.
+/ We define the Class type for the request RpcRequest, and also the response type class RpcResponse
+*/
+service RpcBenchmarkService {
+    rpc benchmark(RpcBenchMarkRequest) returns (RpcBenchMarkResponse);
+}
