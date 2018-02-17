@@ -41,7 +41,7 @@ For this benchmark we made 10k request and calc the response time
 
 * [gRPC](src/main/java/com/politrons/grpc/benchmark/regular) using standard implementation.
 
-* [gRPC Reactive](src/main/java/com/politrons/grpc/benchmark/reactive) using reactive ObservableStream.
+* [gRPC Reactive](src/main/java/com/politrons/grpc/benchmark/reactive) using reactive StreamObserver.
 
 ##### Results
 
