@@ -1,3 +1,5 @@
+import com.politrons.grpc.benchmark.BenchmarkUtils
+import com.politrons.grpc.benchmark.BenchmarkUtils._
 import com.twitter.finagle.http.{Request, Response}
 import com.twitter.finagle.{Http, Service, http}
 import com.twitter.util.Await
@@ -12,14 +14,12 @@ import com.twitter.util.Await
 object HttpClient {
 
   def run() = {
-    val requestNumber = 1 to 5000 toList
     val client: Service[Request, Response] = Http.newService("localhost:1982")
-    makeRequests(client, requestNumber)
+    makeRequests(client)
   }
 
-
-  private def makeRequests(client: Service[Request, Response], requestNumber: List[Int]) = {
-    requestNumber.foreach(_ => {
+  private def makeRequests(client: Service[Request, Response]) = {
+    1 to requestNumber foreach (_ => {
       val request = http.Request(http.Method.Post, "/grizzly")
       request.setContentString("hello world")
       request.host("localhost:1982")

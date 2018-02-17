@@ -1,6 +1,7 @@
 package com.politrons.grpc.benchmark.regular;
 
 import com.google.common.util.concurrent.ListenableFuture;
+import com.politrons.grpc.benchmark.BenchmarkUtils;
 import com.politrons.grpc.simple.RpcBenchmark;
 import com.politrons.grpc.simple.RpcBenchmarkServiceGrpc;
 import io.grpc.ManagedChannel;
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
+import static com.politrons.grpc.benchmark.BenchmarkUtils.*;
 import static com.politrons.grpc.simple.RpcBenchmark.RpcBenchMarkRequest;
 import static com.politrons.grpc.simple.RpcBenchmark.RpcBenchMarkResponse;
 import static com.politrons.grpc.simple.RpcBenchmarkServiceGrpc.RpcBenchmarkServiceFutureStub;
@@ -34,7 +36,7 @@ public class RpcBenchMarkClient {
     public static void run() {
         ManagedChannel channel = getManagedChannel();
         RpcBenchmarkServiceFutureStub stub = getRpcServiceStub(channel);
-        LongStream.range(1, 5000).forEach(index -> {
+        LongStream.range(1, requestNumber).forEach(index -> {
             try {
                 makeRequest(stub);
             } catch (InterruptedException | ExecutionException | TimeoutException e) {
