@@ -27,8 +27,8 @@ public class ReactiveBenchmarkClient {
 
     static boolean streamFinish = false;
 
-    public static void run() throws InterruptedException {
-        ManagedChannel channel = getManagedChannel();
+    public static void run(int port) throws InterruptedException {
+        ManagedChannel channel = getManagedChannel(port);
         ReactiveServiceGrpc.ReactiveServiceStub stub = ReactiveServiceGrpc.newStub(channel);
         runStream(createServerStream(stub));
         while (!streamFinish) {
@@ -70,8 +70,8 @@ public class ReactiveBenchmarkClient {
     /**
      * ManagedChannel is communication channel for the RPC
      */
-    private static ManagedChannel getManagedChannel() {
-        return ManagedChannelBuilder.forAddress("localhost", 9991)
+    private static ManagedChannel getManagedChannel(int port) {
+        return ManagedChannelBuilder.forAddress("localhost", port)
                 .usePlaintext(true)
                 .build();
     }

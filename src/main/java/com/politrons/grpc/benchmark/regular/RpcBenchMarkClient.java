@@ -33,8 +33,8 @@ import static com.politrons.grpc.simple.RpcBenchmarkServiceGrpc.newFutureStub;
  */
 public class RpcBenchMarkClient {
 
-    public static void run() {
-        ManagedChannel channel = getManagedChannel();
+    public static void run(int port) {
+        ManagedChannel channel = getManagedChannel(port);
         RpcBenchmarkServiceFutureStub stub = getRpcServiceStub(channel);
         LongStream.range(1, requestNumber).forEach(index -> {
             try {
@@ -63,8 +63,8 @@ public class RpcBenchMarkClient {
     /**
      * ManagedChannel is communication channel for the RPC
      */
-    private static ManagedChannel getManagedChannel() {
-        return ManagedChannelBuilder.forAddress("localhost", 9998)
+    private static ManagedChannel getManagedChannel(int port) {
+        return ManagedChannelBuilder.forAddress("localhost", port)
                 .usePlaintext(true)
                 .build();
     }

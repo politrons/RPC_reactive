@@ -11,9 +11,9 @@ public class RpcBenchMarkServer {
      *
      * All request in port specify it will be redirected to the service.
      */
-    public static void start() throws IOException {
+    public static void start(int port) throws IOException {
         Server server = ServerBuilder
-                .forPort(9998)
+                .forPort(port)
                 .addService(new RpcBenchMarkServiceImpl()).build();
         server.start();
     }

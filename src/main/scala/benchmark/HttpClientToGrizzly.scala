@@ -14,8 +14,8 @@ import com.twitter.util.Await
   */
 object HttpClientToGrizzly {
 
-  def run() = {
-    val client: Service[Request, Response] = Http.newService("localhost:1982")
+  def run(port:Int) = {
+    val client: Service[Request, Response] = Http.newService("localhost:"+port)
     makeRequests(client)
   }
 

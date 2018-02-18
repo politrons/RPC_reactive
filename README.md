@@ -35,9 +35,11 @@ An example of how to use streams gRPC between client-server
 
 ![My image](src/main/resources/img/benchmark.png)
 
-For this benchmark we made 10k request using Rest and gRPC, and get the response time.
+For this benchmark we made 10k request in 10 iterations using Rest and gRPC, and get the response time.
 
 * [Rest](src/main/scala/benchmark) Http finagle client against Grizzly server.
+
+* [Rest](src/main/scala/benchmark) Http finagle client against Finagle server.
 
 * [gRPC](src/main/java/com/politrons/grpc/benchmark/regular) using standard implementation.
 
@@ -46,9 +48,10 @@ For this benchmark we made 10k request using Rest and gRPC, and get the response
 ##### Results
 
 ```.bash
-Rest Grizzly response time:17207 millis
-RPC regular response time:8639 millis
-RPC Reactive response time:1331 millis
+Rest Grizzly response time:2764 millis
+Rest Finagle response time:2710 millis
+RPC regular response time:2554 millis
+RPC Reactive response time:4 millis
 ```
 
 #### Configuration

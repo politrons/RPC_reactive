@@ -14,8 +14,8 @@ import com.twitter.util.Await
   */
 object HttpClientToFinagle {
 
-  def run() = {
-    val client: Service[Request, Response] = Http.newService("localhost:1983")
+  def run(port:Int) = {
+    val client: Service[Request, Response] = Http.newService(s"localhost:$port")
     makeRequests(client)
   }
 

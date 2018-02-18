@@ -6,10 +6,10 @@ import java.nio.charset.Charset
 
 import org.glassfish.grizzly.http.server.{HttpHandler, HttpServer, Request, Response}
 
-object MyGrizzlyServer {
+object HttpGrizzlyServer {
 
-  def start = {
-    val server = HttpServer.createSimpleServer("", "localhost", 1982)
+  def start(port:Int) = {
+    val server = HttpServer.createSimpleServer("", "localhost", port)
     server.getServerConfiguration.addHttpHandler(new HttpHandler() {
       @throws[Exception]
       def service(request: Request, response: Response): Unit = {

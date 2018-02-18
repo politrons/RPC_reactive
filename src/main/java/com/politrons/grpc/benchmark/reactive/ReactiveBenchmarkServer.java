@@ -12,9 +12,9 @@ import java.io.IOException;
  */
 public class ReactiveBenchmarkServer {
 
-    public static void start() throws IOException, InterruptedException {
+    public static void start(int port) throws IOException, InterruptedException {
         Server server = ServerBuilder
-                .forPort(9991)
+                .forPort(port)
                 .addService(new ReactiveBenchmarkServiceImpl()).build();
         server.start();
         Thread.sleep(1000);
