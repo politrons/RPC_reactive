@@ -48,10 +48,10 @@ For this benchmark we made 10k request in 10 iterations using Rest and gRPC, and
 ##### Results
 
 ```.bash
-Rest Grizzly response time:2764 millis
-Rest Finagle response time:2710 millis
-RPC regular response time:2554 millis
-RPC Reactive response time:4 millis
+Rest Grizzly - response time:2764 millis
+Rest Finagle - response time:2710 millis
+RPC regular  - response time:2554 millis
+RPC Reactive - response time:4 millis
 ```
 
 #### Configuration
