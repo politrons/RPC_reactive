@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/protobuf/java" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/scala" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/scala" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/thrift/scrooge" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -44,23 +45,36 @@
     <orderEntry type="library" name="Maven: io.reactivex.rxjava2:rxjava:2.1.2" level="project" />
     <orderEntry type="library" name="Maven: io.reactivex:rxjava-math:0.21.0" level="project" />
     <orderEntry type="library" name="Maven: io.reactivex:rxjava:1.1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.12.4" level="project" />
-    <orderEntry type="library" name="Maven: com.twitter:finagle-core_2.12:7.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.twitter:finagle-toggle_2.12:7.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.12" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.4.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.9" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.1" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter:scrooge-core_2.12:18.2.0" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter:util-core_2.12:18.2.0" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter:util-function_2.12:18.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.12.4" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-parser-combinators_2.12:1.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter:finagle-thrift_2.12:18.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter:finagle-netty4_2.12:18.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.16.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.16.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.16.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter:finagle-toggle_2.12:18.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-scala_2.12:2.8.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-paranamer:2.8.4" level="project" />
     <orderEntry type="library" name="Maven: com.thoughtworks.paranamer:paranamer:2.8" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter:libthrift:0.5.0-7" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.12.4" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter:finagle-core_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:finagle-init_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:util-app_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:util-cache_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:util-codec_2.12:7.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.twitter:util-core_2.12:7.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.twitter:util-function_2.12:7.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.12.1" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-parser-combinators_2.12:1.0.4" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:util-hashing_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:util-jvm_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:util-lint_2.12:7.0.0" level="project" />
@@ -76,11 +90,7 @@
     <orderEntry type="library" name="Maven: com.twitter:finagle-netty3_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty:3.10.1.Final" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:finagle-netty4-http_2.12:7.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.twitter:finagle-netty4_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:finagle-http2_2.12:7.0.0" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.12.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.12.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.12.Final" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:util-collection_2.12:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />

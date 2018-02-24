@@ -71,6 +71,45 @@
                 </configuration>
             </plugin>
 
+
+            <!--Scrooge-->
+            <plugin>
+                <groupId>com.twitter</groupId>
+                <artifactId>scrooge-maven-plugin</artifactId>
+                <version>18.2.0</version>
+                <configuration>
+                    <thriftSourceRoot>src/main/scala/finagle/idl/</thriftSourceRoot>
+                    <thriftNamespaceMappings>
+                        <thriftNamespaceMapping>
+                            <from>finagle.idl</from>
+                            <to>finagle.thrift</to>
+                        </thriftNamespaceMapping>
+                    </thriftNamespaceMappings>
+                    <language>scala</language> <!-- default is scala -->
+                    <thriftOpts>
+                        <!-- add other Scrooge command line options using thriftOpts -->
+                        <thriftOpt>--finagle</thriftOpt>
+                    </thriftOpts>
+                    <!-- tell scrooge to not to build the extracted thrift files (defaults to true) -->
+                    <buildExtractedThrift>false</buildExtractedThrift>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>thrift-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>thrift-test-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -108,6 +147,26 @@
             <artifactId>rxjava</artifactId>
             <version>1.1.7</version>
         </dependency>
+
+        <!--Finagle scrooge-->
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.11.0</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>scrooge-core_2.12</artifactId>
+            <version>18.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>finagle-thrift_2.12</artifactId>
+            <version>18.1.0</version>
+        </dependency>
+
 
         <!--Testing-->
         <dependency>

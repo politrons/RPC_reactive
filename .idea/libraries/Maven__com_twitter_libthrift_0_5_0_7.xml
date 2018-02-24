@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.twitter:libthrift:0.5.0-7">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/twitter/libthrift/0.5.0-7/libthrift-0.5.0-7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/twitter/libthrift/0.5.0-7/libthrift-0.5.0-7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/twitter/libthrift/0.5.0-7/libthrift-0.5.0-7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
