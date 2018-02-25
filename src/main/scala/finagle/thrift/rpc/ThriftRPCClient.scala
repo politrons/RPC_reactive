@@ -17,7 +17,7 @@ object ThriftRPCClient {
   def run(port:Int): Unit ={
     val methodPerEndpoint: FirstThriftService.MethodPerEndpoint =
       Thrift.client.build[FirstThriftService.MethodPerEndpoint](s"localhost:$port")
-    0 to requestNumber foreach { index =>
+    0 to requestNumber foreach { _ =>
       val future: Future[String] = methodPerEndpoint.firstRemoteMethod("hello world")
       Await.result(future)
     }
