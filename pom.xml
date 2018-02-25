@@ -78,10 +78,10 @@
                 <artifactId>scrooge-maven-plugin</artifactId>
                 <version>18.2.0</version>
                 <configuration>
-                    <thriftSourceRoot>src/main/scala/finagle/idl/</thriftSourceRoot>
+                    <thriftSourceRoot>src/main/scala/finagle/thrift/idl/</thriftSourceRoot>
                     <thriftNamespaceMappings>
                         <thriftNamespaceMapping>
-                            <from>finagle.idl</from>
+                            <from>finagle.thrift.idl</from>
                             <to>finagle.thrift</to>
                         </thriftNamespaceMapping>
                     </thriftNamespaceMappings>
@@ -164,7 +164,7 @@
         <dependency>
             <groupId>com.twitter</groupId>
             <artifactId>finagle-thrift_2.12</artifactId>
-            <version>18.1.0</version>
+            <version>18.2.0</version>
         </dependency>
 
 
@@ -178,12 +178,12 @@
         <dependency>
             <groupId>com.twitter</groupId>
             <artifactId>finagle-core_2.12</artifactId>
-            <version>7.0.0</version>
+            <version>18.2.0</version>
         </dependency>
         <dependency>
             <groupId>com.twitter</groupId>
             <artifactId>finagle-http_2.12</artifactId>
-            <version>7.0.0</version>
+            <version>18.2.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
