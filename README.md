@@ -93,6 +93,9 @@ For this benchmark we made 10k request in 10 iterations using Rest and gRPC, and
 
 * [gRPC Reactive](src/main/java/com/politrons/grpc/benchmark/reactive) using reactive StreamObserver.
 
+* [Thrift RPC](src/main/scala/finagle/thrift/rpc) using Apache thrift.
+
+
 ##### Results
 
 ```.bash
