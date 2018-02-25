@@ -1,24 +1,20 @@
 package com.politrons.grpc.benchmark.regular;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.politrons.grpc.benchmark.BenchmarkUtils;
-import com.politrons.grpc.simple.RpcBenchmark;
-import com.politrons.grpc.simple.RpcBenchmarkServiceGrpc;
+import finagle.BenchmarkUtils;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
-import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
-import static com.politrons.grpc.benchmark.BenchmarkUtils.*;
 import static com.politrons.grpc.simple.RpcBenchmark.RpcBenchMarkRequest;
 import static com.politrons.grpc.simple.RpcBenchmark.RpcBenchMarkResponse;
 import static com.politrons.grpc.simple.RpcBenchmarkServiceGrpc.RpcBenchmarkServiceFutureStub;
 import static com.politrons.grpc.simple.RpcBenchmarkServiceGrpc.newFutureStub;
+import static finagle.BenchmarkUtils.*;
 
 /**
  * After we create the classes through the contract that we deifne(rcp_contract.proto) we can use already the
@@ -36,7 +32,7 @@ public class RpcBenchMarkClient {
     public static void run(int port) {
         ManagedChannel channel = getManagedChannel(port);
         RpcBenchmarkServiceFutureStub stub = getRpcServiceStub(channel);
-        LongStream.range(1, requestNumber).forEach(index -> {
+        LongStream.range(1, requestNumber()).forEach(index -> {
             try {
                 makeRequest(stub);
             } catch (InterruptedException | ExecutionException | TimeoutException e) {
@@ -48,7 +44,11 @@ public class RpcBenchMarkClient {
 
     private static void makeRequest(RpcBenchmarkServiceFutureStub stub) throws InterruptedException, ExecutionException, TimeoutException {
         ListenableFuture<RpcBenchMarkResponse> future = stub.benchmark(RpcBenchMarkRequest.newBuilder()
-                .setAttr("hello world")
+                .setAttr("value")
+                .setAttr1("value")
+                .setAttr2("value")
+                .setAttr3("value")
+                .setAttr4("value")
                 .build());
         future.get(10, TimeUnit.SECONDS);
     }

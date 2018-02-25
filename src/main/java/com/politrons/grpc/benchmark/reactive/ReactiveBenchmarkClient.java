@@ -1,18 +1,17 @@
 package com.politrons.grpc.benchmark.reactive;
 
-import com.politrons.grpc.benchmark.BenchmarkUtils;
 import com.politrons.grpc.reactive.ReactiveRequest;
 import com.politrons.grpc.reactive.ReactiveResponse;
 import com.politrons.grpc.reactive.ReactiveServiceGrpc;
+import finagle.BenchmarkUtils;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import rx.Observable;
 
-import java.util.Arrays;
 import java.util.stream.LongStream;
 
-import static com.politrons.grpc.benchmark.BenchmarkUtils.*;
+import static finagle.BenchmarkUtils.*;
+
 
 /**
  * Using StreamObserver we can use a communication stream to communicate client and server without close communication.
@@ -40,7 +39,8 @@ public class ReactiveBenchmarkClient {
         return stub.myStreamChannel(new StreamObserver<ReactiveResponse>() {
 
             @Override
-            public void onNext(ReactiveResponse value) { }
+            public void onNext(ReactiveResponse value) {
+            }
 
             @Override
             public void onError(Throwable t) {
@@ -49,15 +49,14 @@ public class ReactiveBenchmarkClient {
 
             @Override
             public void onCompleted() {
-                streamFinish=true;
+                streamFinish = true;
             }
         });
     }
 
     private static void runStream(StreamObserver<ReactiveRequest> serverStream) {
-        LongStream.range(0, requestNumber).forEach(index -> {
-            serverStream.onNext(getReactiveRequest("hello world"));
-        });
+        LongStream.range(0, requestNumber())
+                .forEach(index -> serverStream.onNext(getReactiveRequest(getPayload())));
         serverStream.onCompleted();
     }
 

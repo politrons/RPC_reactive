@@ -1,6 +1,7 @@
-package benchmark
+package benchmark.server
 
-
+import com.google.gson.Gson
+import com.politrons.grpc.Pojo
 import com.twitter.finagle.{http, _}
 import com.twitter.util.Future
 
@@ -14,7 +15,9 @@ object FinagleService {
   val service = new Service[http.Request, http.Response] {
     def apply(req: http.Request): Future[http.Response] = {
       val res = req.getResponse()
-      res.setContentString(req.getContentString())
+      val gson = new Gson()
+      val pojo = gson.fromJson(res.getContentString(), classOf[Pojo])
+      res.setContentString(gson.toJson(pojo))
       Future.value(res)
     }
   }

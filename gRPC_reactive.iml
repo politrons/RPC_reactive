@@ -37,7 +37,6 @@
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:19.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java-util:3.3.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.7" level="project" />
     <orderEntry type="library" name="Maven: com.google.api.grpc:proto-google-common-protos:0.1.9" level="project" />
     <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf-lite:1.5.0" level="project" />
     <orderEntry type="library" name="Maven: io.grpc:grpc-stub:1.5.0" level="project" />
@@ -71,6 +70,7 @@
     <orderEntry type="library" name="Maven: com.twitter:libthrift:0.5.0-7" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.5" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.12.4" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:finagle-core_2.12:18.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:finagle-init_2.12:18.2.0" level="project" />

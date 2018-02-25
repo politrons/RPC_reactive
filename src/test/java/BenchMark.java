@@ -1,12 +1,15 @@
-import benchmark.*;
+
+import benchmark.client.HttpClientToFinagle;
+import benchmark.client.HttpClientToGrizzly;
+import benchmark.server.HttpFinagleServers;
+import benchmark.server.HttpGrizzlyServer;
 import com.politrons.grpc.benchmark.reactive.ReactiveBenchmarkClient;
 import com.politrons.grpc.benchmark.reactive.ReactiveBenchmarkServer;
 import com.politrons.grpc.benchmark.regular.RpcBenchMarkClient;
 import com.politrons.grpc.benchmark.regular.RpcBenchMarkServer;
-import finagle.asyncStream.StreamingClient;
-import finagle.asyncStream.StreamingServer;
+import finagle.thrift.benchmark.ThriftBenchmarkClient;
+import finagle.thrift.benchmark.ThriftBenchmarkServer;
 import finagle.thrift.rpc.ThriftRPCClient;
-import finagle.thrift.rpc.ThriftRPCServer;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -44,9 +47,9 @@ public class BenchMark {
                 System.out.println("gRPC Reactive response - time:" + ((System.currentTimeMillis() - start)) + " millis");
 
                 int port4 = 8004 + index * 3 + 2;
-                ThriftRPCServer.start(port4);
+                ThriftBenchmarkServer.start(port4);
                 start = System.currentTimeMillis();
-                ThriftRPCClient.run(port4);
+                ThriftBenchmarkClient.run(port4);
                 System.out.println("Thrift RPC - response time:" + ((System.currentTimeMillis() - start)) + " millis");
 
             } catch (IOException | InterruptedException e) {

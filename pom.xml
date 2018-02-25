@@ -167,6 +167,12 @@
             <version>18.2.0</version>
         </dependency>
 
+        <!--Json-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.2</version>
+        </dependency>
 
         <!--Testing-->
         <dependency>

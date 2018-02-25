@@ -83,7 +83,7 @@ An example of how thrift RPC works between client-server
 
 ![My image](src/main/resources/img/benchmark.png)
 
-For this benchmark we made 10k request in 10 iterations using Rest and gRPC, and get the response time.
+For this benchmark we made 1000 request with Json body for Rest and proto and thrift for RPC.
 
 * [Rest](src/main/scala/benchmark) Http finagle client against Grizzly server.
 
@@ -99,8 +99,9 @@ For this benchmark we made 10k request in 10 iterations using Rest and gRPC, and
 ##### Results
 
 ```.bash
-Rest Grizzly - response time:2764 millis
-Rest Finagle - response time:2710 millis
-RPC regular  - response time:2554 millis
-RPC Reactive - response time:4 millis
+Rest Grizzly http 1.0 - response time:632 millis
+Rest Finagle http 1.0 - response time:563 millis
+gRPC regular - response time:475 millis
+gRPC Reactive response - time:4 millis
+Thrift RPC - response time:396 millis
 ```

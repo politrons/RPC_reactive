@@ -1,4 +1,4 @@
-package benchmark
+package benchmark.server
 
 import com.twitter.finagle._
 

@@ -1,9 +1,9 @@
-package benchmark
+package benchmark.client
 
-import com.politrons.grpc.benchmark.BenchmarkUtils._
 import com.twitter.finagle.http.{Request, Response}
 import com.twitter.finagle.{Http, Service, http}
 import com.twitter.util.Await
+import finagle.BenchmarkUtils._
 
 /**
   * Created by pabloperezgarcia on 08/04/2017.
@@ -12,17 +12,18 @@ import com.twitter.util.Await
   * The Service class will receive and response a Future[Response] the type that you specify
   * Service[Req,Rep]
   */
-object HttpClientToFinagle {
+object HttpClientToGrizzly {
 
   def run(port:Int) = {
-    val client: Service[Request, Response] = Http.newService(s"localhost:$port")
+    val client: Service[Request, Response] = Http.newService("localhost:"+port)
     makeRequests(client)
   }
 
   private def makeRequests(client: Service[Request, Response]) = {
     1 to requestNumber foreach (_ => {
-      val request = http.Request(http.Method.Post, "/")
-      request.setContentString("hello world")
+      val request = http.Request(http.Method.Post, "/grizzly")
+      request.setContentString(getPayload)
+      request.host("localhost:1982")
       val response = client(request)
       Await.result(response)
     })

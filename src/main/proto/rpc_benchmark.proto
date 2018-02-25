@@ -10,6 +10,11 @@ package com.politrons.grpc.simple;
 //Here we define the Request Class type of the communication.
 message RpcBenchMarkRequest {
     string attr = 1;
+    string attr1 = 2;
+    string attr2 = 3;
+    string attr3 = 4;
+    string attr4 = 5;
+
 }
 
 //Here we define the Response Class type of the communication.
