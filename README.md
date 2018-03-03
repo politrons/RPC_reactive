@@ -70,6 +70,8 @@ The plugin you need to add in your pom is
 
 ### Thrift
 
+![My image](src/main/resources/img/apache.png)
+
 An example of how thrift RPC works between client-server
 
 * [client](src/main/scala/finagle/thrift/rpc/ThriftRPCClient.scala)
@@ -78,6 +80,55 @@ An example of how thrift RPC works between client-server
 
 * [thrift](src/main/scala/finagle/thrift/idl/finagle_scrooge.thrift)
 
+##### Configuration
+
+Just like with gRPC once that you have your contracts(thrift) ready, you need to build your classes which will
+be used for the communication between client and server.
+In these examples we decide to use the twitter scrooge maven plugin.
+
+The plugin you need to add in your pom is
+
+```
+          <plugin>
+                <groupId>com.twitter</groupId>
+                <artifactId>scrooge-maven-plugin</artifactId>
+                <version>18.2.0</version>
+                <configuration>
+                    <thriftSourceRoot>src/main/scala/finagle/thrift/idl/</thriftSourceRoot>
+                    <thriftNamespaceMappings>
+                        <thriftNamespaceMapping>
+                            <from>finagle.thrift.idl</from>
+                            <to>finagle.thrift</to>
+                        </thriftNamespaceMapping>
+                    </thriftNamespaceMappings>
+                    <language>scala</language> <!-- default is scala -->
+                    <thriftOpts>
+                        <!-- add other Scrooge command line options using thriftOpts -->
+                        <thriftOpt>--finagle</thriftOpt>
+                    </thriftOpts>
+                    <!-- tell scrooge to not to build the extracted thrift files (defaults to true) -->
+                    <buildExtractedThrift>false</buildExtractedThrift>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>thrift-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>thrift-test-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+```
 
 ## Benchmarks
 
