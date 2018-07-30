@@ -6,10 +6,16 @@ public class AvroFeature {
 
 
     @Test
-    public void serializeDeserializeAvro() {
-        SerializeAvro.main(null);
-        DeserializeAvro.main(null);
-
+    public void serializeDeserializeInFile() {
+        SerializeAvro.toFile();
+        DeserializeAvro.fromFile();
     }
+
+    @Test
+    public void serializeDeserializeInByteArray() {
+        SerializeAvro.toByteArray();
+        DeserializeAvro.fromByteArray();
+    }
+
 
 }

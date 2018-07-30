@@ -2,15 +2,19 @@ package com.politrons.avro;
 
 import org.apache.avro.file.DataFileWriter;
 import org.apache.avro.io.DatumWriter;
+import org.apache.avro.io.Encoder;
+import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.specific.SpecificDatumWriter;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
 public class SerializeAvro {
 
+    static byte[] avroPersonData;
 
-    public static AvroPerson createPerson() {
+    private static AvroPerson createPerson() {
         AvroPerson p1 = new AvroPerson();
         p1.setId(1);
         p1.setUsername("mrscarter");
@@ -19,7 +23,7 @@ public class SerializeAvro {
         return p1;
     }
 
-    public static void main(String args[]) {
+    public static void toFile() {
         File avroOutput = new File("avro-person.avro");
         try {
             DatumWriter<AvroPerson> bdPersonDatumWriter = new SpecificDatumWriter<>(AvroPerson.class);
@@ -30,6 +34,18 @@ public class SerializeAvro {
             dataFileWriter.close();
         } catch (IOException e) {
             System.out.println("Error writing Avro");
+        }
+    }
+
+    public static void toByteArray() {
+        DatumWriter<AvroPerson> employeeWriter = new SpecificDatumWriter<>(AvroPerson.class);
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            Encoder binaryEncoder = EncoderFactory.get().binaryEncoder(baos, null);
+            employeeWriter.write(createPerson(), binaryEncoder);
+            binaryEncoder.flush();
+            avroPersonData = baos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
