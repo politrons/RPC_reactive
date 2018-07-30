@@ -20,7 +20,7 @@ public class SerializeAvro {
     }
 
     public static void main(String args[]) {
-        File avroOutput = new File("bdperson-test.avro");
+        File avroOutput = new File("avro-person.avro");
         try {
             DatumWriter<AvroPerson> bdPersonDatumWriter = new SpecificDatumWriter<>(AvroPerson.class);
             DataFileWriter<AvroPerson> dataFileWriter = new DataFileWriter<>(bdPersonDatumWriter);

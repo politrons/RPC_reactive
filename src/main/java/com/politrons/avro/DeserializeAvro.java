@@ -11,7 +11,7 @@ public class DeserializeAvro {
 
     public static void main(String args[]){
         try {
-            File avroOutput = new File("bdperson-test.avro");
+            File avroOutput = new File("avro-person.avro");
             DatumReader<AvroPerson> bdPersonDatumReader = new SpecificDatumReader(AvroPerson.class);
             DataFileReader<AvroPerson> dataFileReader = new DataFileReader<>(avroOutput, bdPersonDatumReader);
             AvroPerson p = null;
