@@ -25,7 +25,7 @@ object StreamingClient extends App {
     val openStreamRequest = http.Request(http.Method.Get, "/start")
 
     client(openStreamRequest).flatMap {
-      case response =>
+      response =>
         response.write(Buf.Utf8("go it"))
         fromReader(response.reader).foreach {
           case Buf.Utf8(buf) =>
