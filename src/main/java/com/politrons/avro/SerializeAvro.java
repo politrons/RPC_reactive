@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class SerializeAvro {
 
-    static byte[] avroPersonData;
+    public static byte[] avroPersonData;
 
     private static AvroPerson createPerson() {
         AvroPerson p1 = new AvroPerson();
@@ -37,7 +37,7 @@ public class SerializeAvro {
         }
     }
 
-    public static void toByteArray() {
+    public static byte[] toByteArray() {
         DatumWriter<AvroPerson> employeeWriter = new SpecificDatumWriter<>(AvroPerson.class);
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             Encoder binaryEncoder = EncoderFactory.get().binaryEncoder(baos, null);
@@ -47,5 +47,6 @@ public class SerializeAvro {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return avroPersonData;
     }
 }

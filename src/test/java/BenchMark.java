@@ -1,6 +1,8 @@
 
+import benchmark.client.HttpClientToAvro;
 import benchmark.client.HttpClientToFinagle;
 import benchmark.client.HttpClientToGrizzly;
+import benchmark.server.HttpAvroServer;
 import benchmark.server.HttpFinagleServers;
 import benchmark.server.HttpGrizzlyServer;
 import com.politrons.grpc.benchmark.reactive.ReactiveBenchmarkClient;
@@ -51,6 +53,13 @@ public class BenchMark {
                 start = System.currentTimeMillis();
                 ThriftBenchmarkClient.run(port4);
                 System.out.println("Thrift RPC - response time:" + ((System.currentTimeMillis() - start)) + " millis");
+
+                int port5 = 9004 + index * 3 + 2;
+                HttpAvroServer.start(port5);
+                start = System.currentTimeMillis();
+                HttpClientToAvro.run(port5);
+                System.out.println("Avro - response time:" + ((System.currentTimeMillis() - start)) + " millis");
+
 
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();

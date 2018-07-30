@@ -26,14 +26,15 @@ public class DeserializeAvro {
         }
     }
 
-    public static void fromByteArray() {
+    public static AvroPerson fromByteArray(byte[] avroPersonData) {
+        AvroPerson avroPerson = null;
         try {
             DatumReader<AvroPerson> employeeReader = new SpecificDatumReader<>(AvroPerson.class);
-            Decoder binaryDecoder = DecoderFactory.get().binaryDecoder(SerializeAvro.avroPersonData, null);
-            AvroPerson avroPerson = employeeReader.read(null, binaryDecoder);
-            System.out.println(avroPerson);
+            Decoder binaryDecoder = DecoderFactory.get().binaryDecoder(avroPersonData, null);
+            avroPerson = employeeReader.read(null, binaryDecoder);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return avroPerson;
     }
 }
