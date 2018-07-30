@@ -130,6 +130,57 @@ The plugin you need to add in your pom is
 
 ```
 
+### Avro
+
+![My image](src/main/resources/img/avro.png)
+
+An example of how avro encoder/decoder works between client-server
+
+* [encoder](src/main/java/com/politrons/avro/SerializeAvro.java)
+
+* [decoder](src/main/java/com/politrons/avro/DeserializeAvro.java)
+
+* [avro](src/main/avro/person.avsc)
+
+An example of how avro RPC works between client-server
+
+* [client](src/main/java/com/politrons/avro/rpc/ClientAvroRPC.java)
+
+* [Service](src/main/java/com/politrons/avro/rpc/ServerAvroRPC.java)
+
+* [avro](src/main/avro/avro_rpc.avpr)
+
+##### Configuration
+
+Just like with gRPC once that you have your contracts(avro) ready, you need to build your classes which will
+be used for the communication between client and server.
+In these examples we use avro-maven-plugin<.
+
+The plugin you need to add in your pom is
+
+```
+           <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>1.8.2</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>schema</goal>
+                            <goal>protocol</goal>
+                            <goal>idl-protocol</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+```
+
+
 ## Benchmarks
 
 ![My image](src/main/resources/img/benchmark.png)
@@ -150,6 +201,8 @@ For this benchmark we made 1000 request with Json body for Rest and proto and th
 ##### Results
 
 ```.bash
+Avro Grizzly - response time:211 millis
+Avro RPC - response time:109 millis
 Rest Grizzly http 1.0 - response time:632 millis
 Rest Finagle http 1.0 - response time:563 millis
 gRPC regular - response time:475 millis

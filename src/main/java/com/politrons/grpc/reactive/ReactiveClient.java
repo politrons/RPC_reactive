@@ -13,7 +13,7 @@ import java.util.Arrays;
  * decide to close the communication invoking onComplete.
  *
  * The invocation of the method streamCall it will send the Stream with the Response communication, and the Server
- * will response with the Stream of Request, then the communication can start using this channel,using the Request Stream
+ * will response with the Stream of Request, then the communication can run using this channel,using the Request Stream
  * from client and Response stream from the server. Brilliant!!!
  */
 public class ReactiveClient {

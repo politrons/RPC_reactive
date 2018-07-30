@@ -19,7 +19,7 @@ object StreamingServer {
   val service = new Service[http.Request, http.Response] {
     def apply(req: http.Request): Future[http.Response] = {
       req.path match {
-        case "/start" => {
+        case "/run" => {
           Future.value(Response(req.version, Status.Ok, writable))
         }
         case "/talk" =>

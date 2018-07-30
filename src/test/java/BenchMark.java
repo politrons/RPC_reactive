@@ -5,13 +5,14 @@ import benchmark.client.HttpClientToGrizzly;
 import benchmark.server.HttpAvroServer;
 import benchmark.server.HttpFinagleServers;
 import benchmark.server.HttpGrizzlyServer;
+import com.politrons.avro.rpc.ClientAvroRPC;
+import com.politrons.avro.rpc.ServerAvroRPC;
 import com.politrons.grpc.benchmark.reactive.ReactiveBenchmarkClient;
 import com.politrons.grpc.benchmark.reactive.ReactiveBenchmarkServer;
 import com.politrons.grpc.benchmark.regular.RpcBenchMarkClient;
 import com.politrons.grpc.benchmark.regular.RpcBenchMarkServer;
 import finagle.thrift.benchmark.ThriftBenchmarkClient;
 import finagle.thrift.benchmark.ThriftBenchmarkServer;
-import finagle.thrift.rpc.ThriftRPCClient;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -24,9 +25,22 @@ public class BenchMark {
     public void RpcVsRest() {
         IntStream.range(0, 10).forEach(index -> {
             try {
+
+                int port5 = 9004 + index * 3 + 2;
+                HttpAvroServer.start(port5);
+                long start = System.currentTimeMillis();
+                HttpClientToAvro.run(port5);
+                System.out.println("Avro - response time:" + ((System.currentTimeMillis() - start)) + " millis");
+
+                int port6 = 10004 + index * 3 + 2;
+                ServerAvroRPC.start(port6);
+                start = System.currentTimeMillis();
+                ClientAvroRPC.run(port6);
+                System.out.println("Avro RPC - response time:" + ((System.currentTimeMillis() - start)) + " millis");
+
                 int port = 4000 + index * 3 + 2;
                 HttpGrizzlyServer.start(port);
-                long start = System.currentTimeMillis();
+                 start = System.currentTimeMillis();
                 HttpClientToGrizzly.run(port);
                 System.out.println("Rest Grizzly http 1.0 - response time:" + ((System.currentTimeMillis() - start)) + " millis");
 
@@ -53,12 +67,6 @@ public class BenchMark {
                 start = System.currentTimeMillis();
                 ThriftBenchmarkClient.run(port4);
                 System.out.println("Thrift RPC - response time:" + ((System.currentTimeMillis() - start)) + " millis");
-
-                int port5 = 9004 + index * 3 + 2;
-                HttpAvroServer.start(port5);
-                start = System.currentTimeMillis();
-                HttpClientToAvro.run(port5);
-                System.out.println("Avro - response time:" + ((System.currentTimeMillis() - start)) + " millis");
 
 
             } catch (IOException | InterruptedException e) {

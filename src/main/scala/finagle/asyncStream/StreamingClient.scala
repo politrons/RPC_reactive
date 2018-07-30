@@ -22,7 +22,7 @@ object StreamingClient extends App {
   def run(port: Int) = {
     val client = Http.client.withStreaming(enabled = true).newService(s"/$$/inet/localhost/$port")
 
-    val openStreamRequest = http.Request(http.Method.Get, "/start")
+    val openStreamRequest = http.Request(http.Method.Get, "/run")
 
     client(openStreamRequest).flatMap {
       response =>

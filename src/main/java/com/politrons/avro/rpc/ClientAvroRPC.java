@@ -1,12 +1,14 @@
 package com.politrons.avro.rpc;
 
+import org.apache.avro.AvroRemoteException;
 import org.apache.avro.ipc.NettyTransceiver;
 import org.apache.avro.ipc.specific.SpecificRequestor;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.stream.LongStream;
 
-import static com.politrons.avro.rpc.ServerAvroRPC.startServer;
+import static finagle.BenchmarkUtils.requestNumber;
 
 
 /**
@@ -14,23 +16,23 @@ import static com.politrons.avro.rpc.ServerAvroRPC.startServer;
  */
 public class ClientAvroRPC {
 
-    public static void main(String[] args) throws IOException {
-        // usually this would be another app, but for simplicity
-        startServer();
-
-        NettyTransceiver client = new NettyTransceiver(new InetSocketAddress(65111));
+    public static void run(int port) throws IOException {
+        NettyTransceiver client = new NettyTransceiver(new InetSocketAddress(port));
         // client code - attach to the server and send a message
         CustomAvroRPC proxy = SpecificRequestor.getClient(CustomAvroRPC.class, client);
-        System.out.println("Client built, got proxy");
-
-        // fill in the Message record and send it
-        Message message = new Message();
-        message.setTo("Receiver");
-        message.setFrom("Sender");
-        message.setBody("Body message");
-        System.out.println("Calling proxy.send with message:  " + message.toString());
-        System.out.println("Result: " + proxy.send(message));
-
+        LongStream.range(1, requestNumber()).forEach(index -> {
+                    // fill in the Message record and send it
+                    Message message = new Message();
+                    message.setTo("Receiver");
+                    message.setFrom("Sender");
+                    message.setBody("Body message");
+            try {
+                CharSequence result = proxy.send(message);
+//                System.out.println("Result: " + result);
+            } catch (AvroRemoteException e) {
+                e.printStackTrace();
+            }
+        });
         // cleanup
         client.close();
         ServerAvroRPC.server.close();
