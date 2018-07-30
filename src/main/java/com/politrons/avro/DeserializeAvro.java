@@ -29,9 +29,9 @@ public class DeserializeAvro {
     public static AvroPerson fromByteArray(byte[] avroPersonData) {
         AvroPerson avroPerson = null;
         try {
-            DatumReader<AvroPerson> employeeReader = new SpecificDatumReader<>(AvroPerson.class);
+            DatumReader<AvroPerson> personReader = new SpecificDatumReader<>(AvroPerson.class);
             Decoder binaryDecoder = DecoderFactory.get().binaryDecoder(avroPersonData, null);
-            avroPerson = employeeReader.read(null, binaryDecoder);
+            avroPerson = personReader.read(null, binaryDecoder);
         } catch (IOException e) {
             e.printStackTrace();
         }

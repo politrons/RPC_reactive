@@ -29,6 +29,8 @@
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>schema</goal>
+                            <goal>protocol</goal>
+                            <goal>idl-protocol</goal>
                         </goals>
                         <configuration>
                             <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
@@ -275,6 +277,12 @@
                     <artifactId>paranamer</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-ipc</artifactId>
+            <version>1.8.2</version>
         </dependency>
 
 
