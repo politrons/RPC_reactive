@@ -203,12 +203,4 @@ For this benchmark we made 1000 request with Json body for Rest and proto and th
 
 ##### Results
 
-```.bash
-Rest Grizzly http 1.0 - response time:632 millis
-Rest Finagle http 1.0 - response time:563 millis
-gRPC regular - response time:475 millis
-gRPC Reactive response - time:4 millis
-Thrift RPC - response time:396 millis
-Avro Grizzly - response time:211 millis
-Avro RPC - response time:109 millis
-```
+![My image](src/main/resources/img/benchmark_result.png)
