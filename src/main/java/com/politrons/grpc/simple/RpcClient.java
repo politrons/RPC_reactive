@@ -3,6 +3,8 @@ package com.politrons.grpc.simple;
 import com.google.common.util.concurrent.ListenableFuture;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Metadata;
+import io.grpc.stub.MetadataUtils;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +26,17 @@ public class RpcClient {
     public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
         ManagedChannel channel = getManagedChannel();
         RpcServiceGrpc.RpcServiceFutureStub stub = getRpcServiceStub(channel);
+
+        //Create custom header
+        Metadata header=new Metadata();
+        Metadata.Key<String> key =
+                Metadata.Key.of("Custom_header", Metadata.ASCII_STRING_MARSHALLER);
+        header.put(key, "This is working!!");
+
+
+        stub = MetadataUtils.attachHeaders(stub, header);
+        //
+
         ListenableFuture<RpcContract.RpcResponse> future = stub.connect(RpcContract.RpcRequest.newBuilder()
                                                                 .setAttr("hello world")
                                                                 .build());
