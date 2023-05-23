@@ -1,4 +1,4 @@
-Author Pablo Pérez García 
+Author Pablo Picouto García 
 
 ![My image](src/main/resources/img/simple.svg)
 
